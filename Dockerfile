@@ -10,16 +10,14 @@ RUN --mount=type=cache,target=/var/cache/apt \
     apt-get install -y --no-install-recommends \
     build-essential
 
-RUN --mount=type=cache,target=/root/.cache/pip \
-    --mount=type=cache,target=/root/.cache/pypoetry \
+RUN --mount=type=cache,target=/root/.cache \
     pip install poetry && \
     poetry config virtualenvs.create false && \
     poetry install --no-interaction --with main --with prod --no-root
 
 COPY . .
 
-RUN --mount=type=cache,target=/root/.cache/pip \
-    --mount=type=cache,target=/root/.cache/pypoetry \
+RUN --mount=type=cache,target=/root/.cache \
     poetry install --no-interaction --with main --with prod
 
 CMD [   \
