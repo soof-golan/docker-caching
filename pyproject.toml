@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "docker-caching"
+version = "0.1.0"
+description = ""
+authors = ["Soof Golan <soofgolan@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.104.1"
+uvicorn = {extras = ["standard"], version = "^0.24.0.post1"}
+
+[tool.poetry.group.prod.dependencies]
+uvicorn = {extras = ["standard"], version = "^0.24.0.post1"}
+gunicorn = "^21.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
