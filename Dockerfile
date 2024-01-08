@@ -20,13 +20,7 @@ COPY . .
 RUN --mount=type=cache,target=/root/.cache \
     poetry install --no-interaction --with main --with prod
 
-CMD [   \
-        "poetry", "run", "--",\
-        "gunicorn", \
-        "main:app", \
-        "--bind", \
-        "0.0.0.0:8000", \
-        "--worker-class", "uvicorn.workers.UvicornWorker", \
-        "--workers", "4", \
-        "--log-level", "info" \
-    ]
+CMD [ \
+    "poetry", "run", "--", \
+    "gunicorn main:app --bind 0.0.0.0:8000"\
+]
